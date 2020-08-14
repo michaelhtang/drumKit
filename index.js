@@ -1,6 +1,7 @@
 function buttonPressed() {
   console.log(event);
   makeSound(event.key);
+  buttonAnimation(event.key);
 }
 
 function clickHandle() {
@@ -8,6 +9,7 @@ function clickHandle() {
   console.log(buttonClicked.innerHTML);
   var buttonInnerHTML = this.innerHTML
   makeSound(buttonInnerHTML);
+  buttonAnimation(buttonInnerHTML);
 
 }
 
@@ -51,6 +53,16 @@ function makeSound(key) {
     default: console.log(key)
 
   }
+
+}
+
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+//remove pressed class after 100ms
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+  }, 100);
 
 }
 
